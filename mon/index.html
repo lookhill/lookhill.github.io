@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper" style="display: none;">
+
+     
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+           
+                <!-- Begin Page Content -->
+                <div class="container-fluid mt-3">
+
+                    <!-- Page Heading -->
+                    <!--div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    </div-->
+
+                    <div id="inverterDataRow"></div>
+                    <!-- Content Row -->
+                    <div id="inverterTemplateDataRow" class=" d-none">
+                        <div>
+                        <h6 class="m-0 font-weight-bold inverterTitle">---</h6>
+                        <div class="row" >
+
+                            <!-- Earnings (Monthly) Card Example -->
+                            <div class="col-xl-4 col-md-6 col-12 mb-4">
+                                <div class="card border-left-warning shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                    Current Power</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800 currentPower">--- W</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-bolt fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Earnings (Monthly) Card Example -->
+                            <div class="col-xl-4 col-md-6 col-6 mb-4">
+                                <div class="card border-left-success shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                    Yeld today</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800 yeldToday">--- kWh</div>
+                                            </div>
+                                            <div class="col-auto d-none d-sm-block">
+                                                <i class="fas fa-charging-station fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Earnings (Monthly) Card Example -->
+                            <div class="col-xl-4 col-md-6 col-6 mb-4">
+                                <div class="card border-left-info shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                    Total yeld</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800 totalYeld">--- kWh</div>
+                                            </div>
+                                            <div class="col-auto d-none d-sm-block">
+                                                <i class="fas fa-charging-station fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-12 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary inverterSN">---</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div id="inverterList" class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Inverter S/N:</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <a class="btn btn-primary btn-user btn-block" id="btnLogout">
+                            Esci
+                        </a>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+<div id="loginForm" >
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Benvenuto</h1>
+                                    </div>
+                                    <form class="user">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user" id="usrEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user" id="usrPassword" placeholder="Password">
+                                        </div>
+                                        
+                                        <a class="btn btn-primary btn-user btn-block" id="btnLogin">
+                                            Entra
+                                        </a>
+                                        
+                                    </form>
+                                    
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+  
+      <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+          apiKey: "AIzaSyCjwa_tGffs3ZrFdYwOa26H0WddOVNYcC0",
+          authDomain: "monitoringinverter-9c9ee.firebaseapp.com",
+          databaseURL: "https://monitoringinverter-9c9ee.firebaseio.com",
+          projectId: "monitoringinverter-9c9ee",
+          storageBucket: "monitoringinverter-9c9ee.appspot.com",
+          messagingSenderId: "851226147152",
+          appId: "1:851226147152:web:8891138c7b0b4e8ba49455"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      </script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+
+
+    <script>
+        var splashPage = $('#loginForm');
+        var dashboardPage = $('#wrapper');
+       
+        // Bindings on load.
+    window.addEventListener('load', function() {
+        $('#btnLogin').click(function(){
+
+            var usrEmail = $('#usrEmail').val();
+             var usrPassword = $('#usrPassword').val();
+            
+            firebase.auth().signInWithEmailAndPassword(usrEmail, usrPassword)
+            .then((user) => {
+                console.log('SignedIn!')
+                // Signed in 
+                // ...
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+            });
+
+            
+            return false;
+        });
+
+        
+        // Bind Sign out button.
+        $('#btnLogout').click(function(){
+            firebase.auth().signOut();
+            return false;
+        });
+
+
+
+        // Bind Sign out button.
+        //signOutButton.addEventListener('click', function() {
+        //firebase.auth().signOut();
+        //});
+        // Listen for auth state changes
+        firebase.auth().onAuthStateChanged(onAuthStateChanged);
+
+    }, false);
+
+
+
+        
+    function onAuthStateChanged(user) {
+        // We ignore token refresh events.
+        if (user && currentUID === user.uid) {
+            return;
+        }
+
+        //cleanupUi();
+        if (user) {
+            currentUID = user.uid;
+            
+            splashPage.hide();
+            dashboardPage.show();
+          
+        
+            startDatabaseQueries()
+        
+            console.log('Loggato');
+        } else {
+            // Set currentUID to null.
+            currentUID = null;
+            // Display the splash page where you can sign-in.
+            splashPage.show();
+            dashboardPage.hide();
+            
+            console.log('NON loggato');
+        }
+
+
+    }
+    
+    var availableInverters = [];
+    var currentUID;
+    var inverterData = {
+        'PEL4600N18C17009':{
+            samples:[]
+        },
+        'PEL3400R19340013':{
+            samples:[]
+        }
+    }
+    
+function startDatabaseQueries() {
+    //console.log('===========',startDatabaseQueries)
+    const keys = Object.keys(inverterData);
+    keys.forEach((sn, index) => {
+        //console.log('===========',sn)
+        availableInverters.push(sn);
+
+            var inverter;// = inverterData[sn];
+
+            inverter = firebase.database().ref('inverterSamples/' + sn).orderByChild("date").startAt("2020-11-19").endAt("2020-11-23");
+            inverter.on('value', (snapshot) =>{
+                //var data = snapshot.val();
+                var data = [];
+                snapshot.forEach(function(child) {
+                    data.push(child.val());
+                });
+               
+                inverterData[sn].samples = data.slice();
+                //console.log('sn ' + sn,inverterData[sn].samples);
+
+                var empty = 0;
+                for (let i = 0; i < availableInverters.length; i++) {
+                    var e = availableInverters[i];
+                    if(inverterData[e].samples.length == 0){
+                        empty++;
+                    }
+                }
+                
+
+                //console.log('empty',empty);
+                if(empty == 0){
+                    refreshData();
+                }
+            });
+
+
+    });
+    
+}
+
+        window.chartColors = {"red":"rgb(255, 99, 132)","orange":"rgb(255, 159, 64)","yellow":"rgb(255, 205, 86)","green":"rgb(75, 192, 192)","blue":"rgb(54, 162, 235)","purple":"rgb(153, 102, 255)","grey":"rgb(201, 203, 207)"};
+
+        colors = [];
+        colors.push(window.chartColors.red);
+        colors.push('#4e73df');
+        colors.push(window.chartColors.blue);
+        
+        function refreshData(){
+            var templateRow = $('#inverterTemplateDataRow').html();
+            var chartData = [];
+            $('.inverterSN').html('');
+            $('#inverterDataRow').html('');
+            for (let idx = 0; idx < availableInverters.length; idx++) {
+                var i = availableInverters[idx];
+                //$('#inverterList').append('<a class="dropdown-item inverter-item" href="#" data-inverter="' + i + '">' + invertName(i) + '</a>');
+
+                var el = $(templateRow)
+                el.attr('id', 'datarow_' + i)
+
+                $('#inverterDataRow').append(el);
+
+                $('.inverterTitle','#datarow_' + i).html('<span style="color:' + colors[idx] + ';">' + invertName(i) + '</span>');
+
+               
+                var currentData = inverterData[i].samples[inverterData[i].samples.length - 1];
+                //var currentData = dataArray[dataArray.length-1];
+
+                $('.currentPower','#datarow_' + i).text(currentData.currentPower + 'W');
+                $('.yeldToday','#datarow_' + i).text(currentData.yeldToday + 'kWh');
+                $('.totalYeld','#datarow_' + i).text(currentData.totalYeld + 'kWh');
+            
+               
+                chartData.push({sn: i, values:inverterData[i].samples, color:colors[idx]})
+                $('.inverterSN').append('<span style="color:' + colors[idx] + ';">&bull; ' + invertName(i) + '</span>&nbsp;&nbsp;');
+                
+
+            }
+
+           
+            initChart(chartData);
+        }
+        
+
+        function invertName(sn){
+                if(sn == 'PEL3400R19340013'){
+                    return sn + ' (FRA)';
+                }else if(sn == 'PEL4600N18C17009'){
+                    return sn + ' (ANGELO)';
+                }else{
+                    return sn;
+                }
+                
+
+            }
+
+    </script>
+
+</body>
+
+</html>
