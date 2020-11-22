@@ -14,7 +14,7 @@ function newDateString(days) {
 
 
 function number_format(number, decimals, dec_point, thousands_sep) {
-  // *     example: number_format(1234.56, 2, ',', ' ');
+    // *     example: number_format(1234.56, 2, ',', ' ');
   // *     return: '1 234,56'
   number = (number + '').replace(',', '').replace(' ', '');
   var n = !isFinite(+number) ? 0 : +number,
@@ -148,7 +148,7 @@ myLineChart = new Chart(ctx, {
         },
         display: true,
         scaleLabel: {
-          display: true,
+          display: false,
           labelString: 'Date'
         },
         ticks: {
@@ -200,9 +200,9 @@ myLineChart = new Chart(ctx, {
           return f;
         },
         label: function(tooltipItem, chart) {
-          //console.log(tooltipItem)
+          console.log(tooltipItem)
           //var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return number_format(tooltipItem.yLabel) + 'kW';
+          return number_format(tooltipItem.yLabel/1000.0,3) + 'kW';
         },
         labelTextColor: function(tooltipItem, chart) {
             return '#543453';
