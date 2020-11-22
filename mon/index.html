@@ -12,7 +12,7 @@
     <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -142,6 +142,7 @@
                         
                     </div>
 
+                    <small class="float-md-right d-block text-center lastUpdated" style="font-size: 75%;"></small>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -268,6 +269,10 @@
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    
+
+
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
@@ -276,7 +281,7 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    
 
 
 
@@ -370,6 +375,8 @@
     
 function startDatabaseQueries() {
     //console.log('===========',startDatabaseQueries)
+    var todayString = new Date().toISOString().split('T')[0];
+    
     const keys = Object.keys(inverterData);
     keys.forEach((sn, index) => {
         //console.log('===========',sn)
@@ -377,7 +384,7 @@ function startDatabaseQueries() {
 
             var inverter;// = inverterData[sn];
 
-            inverter = firebase.database().ref('inverterSamples/' + sn).orderByChild("date").startAt("2020-11-19").endAt("2020-11-23");
+            inverter = firebase.database().ref('inverterSamples/' + sn).orderByChild("date").startAt(todayString + "T00:00").endAt(todayString + "T23:59");
             inverter.on('value', (snapshot) =>{
                 //var data = snapshot.val();
                 var data = [];
@@ -429,10 +436,10 @@ function startDatabaseQueries() {
 
                 $('#inverterDataRow').append(el);
 
+                var currentData = inverterData[i].samples[inverterData[i].samples.length - 1];
+
                 $('.inverterTitle','#datarow_' + i).html('<span style="color:' + colors[idx] + ';">' + invertName(i) + '</span>');
 
-               
-                var currentData = inverterData[i].samples[inverterData[i].samples.length - 1];
                 //var currentData = dataArray[dataArray.length-1];
 
                 $('.currentPower','#datarow_' + i).text(currentData.currentPower + 'W');
@@ -446,6 +453,10 @@ function startDatabaseQueries() {
 
             }
 
+            
+                var lastUpd = inverterData[availableInverters[0]].samples[inverterData[availableInverters[0]].samples.length - 1].date;
+                $('.lastUpdated').text('ULTIMO AGGIORNAMENTO: ' + moment(lastUpd).format('DD/MM/YYYY HH:mm'));
+            
            
             initChart(chartData);
         }

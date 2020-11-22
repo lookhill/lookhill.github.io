@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+      
+    </style>
+</head>
+<body>
+
+    <iframe id="remotejs1"></iframe>
+    <iframe id="remotejs2"></iframe>
+
+    <div id="page-splash" style="display: none;">
+        <label for="">Username:</label><br/>
+        <input type="text" name="" id="usrname">
+        <label for="">Password:</label><br/>
+        <input type="password" name="" id="password"><br/><br/>
+        <button id="sign-in-button">Login</button>
+    </div>
+
+    <div id="page-splash-logged" style="display: none;">
+        <button id="sign-out-button">Logout</button>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCjwa_tGffs3ZrFdYwOa26H0WddOVNYcC0",
+            authDomain: "monitoringinverter-9c9ee.firebaseapp.com",
+            databaseURL: "https://monitoringinverter-9c9ee.firebaseio.com",
+            projectId: "monitoringinverter-9c9ee",
+            storageBucket: "monitoringinverter-9c9ee.appspot.com",
+            messagingSenderId: "851226147152",
+            appId: "1:851226147152:web:8891138c7b0b4e8ba49455"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="firebase.js"></script>
+</body>
+</html>
