@@ -47,7 +47,7 @@
 
            
                 <!-- Begin Page Content -->
-                <div class="container-fluid mt-3">
+                <div class="container-fluid mt-3 px-3">
 
                     <!-- Page Heading -->
                     <!--div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -67,7 +67,7 @@
                                         <div class="row">
                                             <!-- Earnings (Monthly) Card Example -->
                                             <div class="col-md-12 col-12 mb-4">
-                                                <div class="card border-left-warning shadow h-100 py-2">
+                                                <div class="card border-left-warning shadow h-100 py-2 main_card">
                                                     <div class="card-body">
                                                         <div class="row">
                                                             <div class="col-6 col-md-12">
@@ -150,7 +150,7 @@
                         <div class="col-xl-12 col-lg-7">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
-                                <div
+                                <!--div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary inverterSN">---</h6>
                                     <div class="dropdown no-arrow">
@@ -163,7 +163,7 @@
                                             <div class="dropdown-header">Inverter S/N:</div>
                                         </div>
                                     </div>
-                                </div>
+                                </div-->
                                 <!-- Card Body -->
                                 <div class="card-body px-0">
                                     <div class="chart-area">
@@ -459,7 +459,7 @@ function startDatabaseQueries() {
         function refreshData(){
             var templateRow = $('#inverterTemplateDataRow').html();
             var chartData = [];
-            $('.inverterSN').html('');
+            //$('.inverterSN').html('');
             $('#inverterDataRow').html('');
             for (let idx = 0; idx < availableInverters.length; idx++) {
                 var i = availableInverters[idx];
@@ -482,7 +482,8 @@ function startDatabaseQueries() {
             
                
                 chartData.push({sn: i, values:inverterData[i].samples, color:colors[idx]})
-                $('.inverterSN').append('<span style="color:' + colors[idx] + ';">&bull; ' + invertName(i) + '</span>&nbsp;&nbsp;');
+                
+                //$('.inverterSN').append('<span style="color:' + colors[idx] + ';">&bull; ' + invertName(i) + '</span>&nbsp;&nbsp;');
                 
 
             }
