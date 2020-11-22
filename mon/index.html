@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +20,16 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+
+        
+@media (max-width: 575px) {
+        .card-body {
+            padding: .75rem;
+        }
+}
+
+    </style>
 
 </head>
 
@@ -45,68 +56,91 @@
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div-->
 
-                    <div id="inverterDataRow"></div>
+                    <div id="inverterDataRow" class="row"></div>
                     <!-- Content Row -->
                     <div id="inverterTemplateDataRow" class=" d-none">
-                        <div>
-                        <h6 class="m-0 font-weight-bold inverterTitle">---</h6>
-                        <div class="row" >
-
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-4 col-md-6 col-12 mb-4">
-                                <div class="card border-left-warning shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Current Power</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800 currentPower">--- W</div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-bolt fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-4 col-md-6 col-6 mb-4">
-                                <div class="card border-left-success shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                    Yeld today</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800 yeldToday">--- kWh</div>
-                                            </div>
-                                            <div class="col-auto d-none d-sm-block">
-                                                <i class="fas fa-charging-station fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-4 col-md-6 col-6 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                    Total yeld</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800 totalYeld">--- kWh</div>
-                                            </div>
-                                            <div class="col-auto d-none d-sm-block">
-                                                <i class="fas fa-charging-station fa-2x text-gray-300"></i>
+                  
+                            <div class="col-12">
+                                <h6 class="m-0 font-weight-bold inverterTitle">---</h6>
+                                <div class="row" >
+                                    <div class="col-12 col-md-4">
+                                        <div class="row">
+                                            <!-- Earnings (Monthly) Card Example -->
+                                            <div class="col-md-12 col-12 mb-4">
+                                                <div class="card border-left-warning shadow h-100 py-2">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-6 col-md-12">
+                                                                <div class="row no-gutters align-items-center">
+                                                                    <div class="col mr-2">
+                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                            Potenza attuale</div>
+                                                                        <div class="h5 mb-0 font-weight-bold text-gray-800 currentPower">--- W</div>
+                                                                    </div>
+                                                                    <div class="col-auto d-none d-sm-block">
+                                                                        <i class="fas fa-bolt fa-2x text-gray-300"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6 d-md-none text-right">
+                                                                <div class="text-xs font-weight-bold text-muted text-uppercase mb-0">
+                                                                    Resa oggi</div>
+                                                                <div class="h6 mb-0 font-weight-bold text-gray-800 yeldToday">--- kWh</div>
+                                                                <br/>
+                                                                <div class="text-xs font-weight-bold text-muted text-uppercase mb-1">
+                                                                    Resa totale</div>
+                                                                <div class="h6 mb-0 font-weight-bold text-gray-800 totalYeld">--- kWh</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-6 col-md-8 d-none d-md-block">
+                                        <div class="row">
+                                            <!-- Earnings (Monthly) Card Example -->
+                                            <div class="col-md-6 col-12 mb-4">
+                                                <div class="card border-left-success shadow h-100 py-2">
+                                                    <div class="card-body">
+                                                        <div class="row no-gutters align-items-center">
+                                                            <div class="col mr-2">
+                                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                                    Resa oggi</div>
+                                                                <div class="h5 mb-0 font-weight-bold text-gray-800 yeldToday">--- kWh</div>
+                                                            </div>
+                                                            <div class="col-auto d-none d-sm-block">
+                                                                <i class="fas fa-charging-station fa-2x text-gray-300"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Earnings (Monthly) Card Example -->
+                                            <div class="col-md-6 col-12 mb-4">
+                                                <div class="card border-left-info shadow h-100 py-2">
+                                                    <div class="card-body">
+                                                        <div class="row no-gutters align-items-center">
+                                                            <div class="col mr-2">
+                                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                                    Resa totale</div>
+                                                                <div class="h5 mb-0 font-weight-bold text-gray-800 totalYeld">--- kWh</div>
+                                                            </div>
+                                                            <div class="col-auto d-none d-sm-block">
+                                                                <i class="fas fa-charging-station fa-2x text-gray-300"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                       
                     </div>
                     <!-- Content Row -->
 
