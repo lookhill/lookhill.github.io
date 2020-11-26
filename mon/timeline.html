@@ -1,0 +1,565 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+
+        
+@media (max-width: 575px) {
+        .card-body {
+            padding: .75rem;
+        }
+}
+
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper" style="display: none;">
+
+     
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+     
+                <!-- Begin Page Content -->
+                <div class="container-fluid mt-3 px-3">
+
+                    <div class="row">
+                        <div class="col-12" id="timeline-wrapper">
+                             <div id="timeline" style="height: 220px;"></div>
+                        </div>
+                        <!--div class="col-4">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-12 btnStartStop" data-room="studio">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Studio</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">---</div>
+                                </div>
+                                <div class="col-12 btnStartStop" data-room="living">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Living</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">---</div>
+                                </div>
+                                <div class="col-12 btnStartStop" data-room="bagno1">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Bagno</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">---</div>
+                                </div>
+                            </div>
+        
+                        </div-->
+                    </div>
+
+                   
+               
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+            
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white" style="position: absolute; bottom: 0; left: 0; right: 0;">
+                <div class="xcontainer my-auto mx-3 pb-0">
+                    <div class="row">
+                        <div class="col-4 btnStartStop">
+                            <a class="btn btn-primary btnStartStop d-block h-100" data-room="studio">-</a>
+                        </div>
+                        <div class="col-4 btnStartStop">
+                            <a class="btn btn-primary btnStartStop d-block h-100" data-room="living">-</a>
+                        </div>
+                        <div class="col-4 btnStartStop">
+                            <a class="btn btn-primary btnStartStop d-block h-100" data-room="bagno1">-</a>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-6"><a class="btn btn-sm btn-danger btnClearData" data-toggle="modal" data-target="#clearDataModal">Elimina Dati</a></div>
+                        <div class="col-6 text-right"><a class="btn btn-sm btn-primary btnViewData">Visualizza Dati</a></div>
+
+                        <textarea id="viewData" rows="5" style="display: none;"></textarea>
+                    </div>
+                </div>
+
+             
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+<div id="loginForm" >
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Benvenuto</h1>
+                                    </div>
+                                    <form class="user">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user" id="usrEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user" id="usrPassword" placeholder="Password">
+                                        </div>
+                                        
+                                        <a class="btn btn-primary btn-user btn-block" id="btnLogin">
+                                            Entra
+                                        </a>
+                                        
+                                    </form>
+                                    
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+ <!-- Logout Modal-->
+ <div class="modal fade" id="clearDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog" role="document">
+     <div class="modal-content">
+         <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLabel">Vuoi veramente eliminare i dati?</h5>
+             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">×</span>
+             </button>
+         </div>
+         <div class="modal-body">Fai clic su elimina per rimuovere i dati dallo storage locale.</div>
+         <div class="modal-footer">
+             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+             <a class="btn btn-danger" href="#" id="btnClearDataConfirmed">Elimina</a>
+         </div>
+     </div>
+ </div>
+</div>
+
+
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+  
+      <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+          apiKey: "AIzaSyCjwa_tGffs3ZrFdYwOa26H0WddOVNYcC0",
+          authDomain: "monitoringinverter-9c9ee.firebaseapp.com",
+          databaseURL: "https://monitoringinverter-9c9ee.firebaseio.com",
+          projectId: "monitoringinverter-9c9ee",
+          storageBucket: "monitoringinverter-9c9ee.appspot.com",
+          messagingSenderId: "851226147152",
+          appId: "1:851226147152:web:8891138c7b0b4e8ba49455"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    
+
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <!--script src="vendor/chart.js/Chart.min.js"></script-->
+
+    <!-- Page level custom scripts -->
+    <!--script src="js/demo/chart-area-demo.js"></script-->
+    
+
+
+
+    <script>
+        var splashPage = $('#loginForm');
+        var dashboardPage = $('#wrapper');
+        var roomdata = {}
+
+     
+        
+
+        // Bindings on load.
+    window.addEventListener('load', function() {
+        $('#btnLogin').click(function(){
+
+            var usrEmail = $('#usrEmail').val();
+             var usrPassword = $('#usrPassword').val();
+            
+            firebase.auth().signInWithEmailAndPassword(usrEmail, usrPassword)
+            .then((user) => {
+                console.log('SignedIn!')
+                // Signed in 
+                // ...
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+            });
+
+            
+            return false;
+        });
+
+        $('.btnViewData').click(function(){
+          $('#viewData').val(JSON.stringify(roomdata));
+          $('#viewData').show();
+            return false;
+        });
+
+        $('#btnClearDataConfirmed').click(function(){
+            localStorage.removeItem('startstopdata');
+            $('#clearDataModal').modal('hide');
+            return false;
+        });
+
+        
+        // Bind Sign out button.
+        $('#btnLogout').click(function(){
+            firebase.auth().signOut();
+            return false;
+        });
+
+     
+        $('.btnStartStop').click(function(){
+            var room = $(this).data('room');
+            var lastRecord = roomdata[room][roomdata[room].length - 1];
+            var started = (lastRecord.end == null);
+            var d = new Date();
+
+            if(started){
+                lastRecord.end = d;
+            }else{
+                roomdata[room].push({start:d, end:null})
+            }
+            saveData();
+            refreshButton(room);
+            refreshChart();
+            return false;
+        });
+
+
+
+        // Bind Sign out button.
+        //signOutButton.addEventListener('click', function() {
+        //firebase.auth().signOut();
+        //});
+        // Listen for auth state changes
+        firebase.auth().onAuthStateChanged(onAuthStateChanged);
+
+    }, false);
+
+    function saveData(){
+        localStorage.setItem("startstopdata", JSON.stringify(roomdata));
+    }
+
+    function loadData(){
+        roomdata = localStorage.getItem("startstopdata");
+
+        if(!roomdata){
+            var st = new Date();    
+            var end = new Date(st);
+            end.setSeconds(st.getSeconds() + 1);
+            roomdata = {
+            living:[
+            {start:st,end:end}
+            ],
+            studio:[
+            {start:st,end:end}
+            ],
+            bagno1:[
+            {start:st,end:end}
+            ]
+        }
+        }else{
+            roomdata = JSON.parse(roomdata);
+        }   
+    }
+
+    function refreshChart(){
+        var w = $('#timeline-wrapper').width() * 1;
+        var rows = [];
+
+        const keys = Object.keys(roomdata);
+        keys.forEach((room, index) => {
+            
+            for (let index = 0; index < roomdata[room].length; index++) {
+                const element = roomdata[room][index];
+                var end = (element.end != null) ? new Date(element.end) : new Date();
+                var start = new Date(element.start);
+                rows.push([room,start, end]);
+            }
+
+        });
+
+        
+
+        google.charts.load('current', {'packages':['timeline']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var container = document.getElementById('timeline');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+
+        dataTable.addColumn({ type: 'string', id: 'President' });
+        dataTable.addColumn({ type: 'date', id: 'Start' });
+        dataTable.addColumn({ type: 'date', id: 'End' });
+        dataTable.addRows(rows);
+
+            var options = {
+                width:w,
+            timeline: {
+            //    singleColor: '#db4437'
+                
+            },colors: ['#db4437', '#db4437','#db4437', '#f4b400']
+            };
+
+        chart.draw(dataTable,options);
+      }
+
+
+    }
+
+
+    function refreshButton(room){
+        try {
+            
+       
+        var lastRecord = roomdata[room][roomdata[room].length - 1];
+            var started = (lastRecord.end == null);
+
+            if(started){
+                $('.btnStartStop[data-room="' + room + '"]').html(room + '<br/>STOP');
+            }else{
+                $('.btnStartStop[data-room="' + room + '"]').html(room + '<br/>START');
+            }
+
+        } catch (error) {
+            
+        }
+    }
+        
+    function onAuthStateChanged(user) {
+        // We ignore token refresh events.
+        if (user && currentUID === user.uid) {
+            return;
+        }
+
+        //cleanupUi();
+        if (user) {
+            currentUID = user.uid;
+            
+            splashPage.hide();
+            dashboardPage.show();
+          
+            loadData();
+
+            const keys = Object.keys(roomdata);
+            keys.forEach((room, index) => {
+                refreshButton(room);
+            });
+        
+            refreshChart();
+       
+        
+            //startDatabaseQueries()
+        
+            console.log('Loggato');
+        } else {
+            // Set currentUID to null.
+            currentUID = null;
+            // Display the splash page where you can sign-in.
+            splashPage.show();
+            dashboardPage.hide();
+            
+            console.log('NON loggato');
+        }
+
+
+    }
+    
+    var availableInverters = [];
+    var currentUID;
+    var inverterData = {
+        'PEL4600N18C17009':{
+            samples:[]
+        },
+        'PEL3400R19340013':{
+            samples:[]
+        }
+    }
+    
+function startDatabaseQueries() {
+    //console.log('===========',startDatabaseQueries)
+    var todayString = new Date().toISOString().split('T')[0];
+    
+    const keys = Object.keys(inverterData);
+    keys.forEach((sn, index) => {
+        //console.log('===========',sn)
+        availableInverters.push(sn);
+
+            var inverter;// = inverterData[sn];
+
+            inverter = firebase.database().ref('inverterSamples/' + sn).orderByChild("date").startAt(todayString + "T00:00").endAt(todayString + "T23:59");
+            inverter.on('value', (snapshot) =>{
+                //var data = snapshot.val();
+                var data = [];
+                snapshot.forEach(function(child) {
+                    data.push(child.val());
+                });
+               
+                inverterData[sn].samples = data.slice();
+                //console.log('sn ' + sn,inverterData[sn].samples);
+
+                var empty = 0;
+                for (let i = 0; i < availableInverters.length; i++) {
+                    var e = availableInverters[i];
+                    if(inverterData[e].samples.length == 0){
+                        empty++;
+                    }
+                }
+                
+
+                //console.log('empty',empty);
+                if(empty == 0){
+                    refreshData();
+                }
+            });
+
+
+    });
+    
+}
+
+        window.chartColors = {"red":"rgb(255, 99, 132)","orange":"rgb(255, 159, 64)","yellow":"rgb(255, 205, 86)","green":"rgb(75, 192, 192)","blue":"rgb(54, 162, 235)","purple":"rgb(153, 102, 255)","grey":"rgb(201, 203, 207)"};
+
+        colors = [];
+        colors.push(window.chartColors.red);
+        colors.push('#4e73df');
+        colors.push(window.chartColors.blue);
+        
+        function refreshData(){
+            var templateRow = $('#inverterTemplateDataRow').html();
+            var chartData = [];
+            //$('.inverterSN').html('');
+            $('#inverterDataRow').html('');
+            for (let idx = 0; idx < availableInverters.length; idx++) {
+                var i = availableInverters[idx];
+                //$('#inverterList').append('<a class="dropdown-item inverter-item" href="#" data-inverter="' + i + '">' + invertName(i) + '</a>');
+
+                var el = $(templateRow)
+                el.attr('id', 'datarow_' + i)
+
+                $('#inverterDataRow').append(el);
+
+                var currentData = inverterData[i].samples[inverterData[i].samples.length - 1];
+
+                $('.inverterTitle','#datarow_' + i).html('<span style="color:' + colors[idx] + ';">' + invertName(i) + '</span>');
+
+                //var currentData = dataArray[dataArray.length-1];
+
+                $('.currentPower','#datarow_' + i).text(currentData.currentPower + 'W');
+                $('.yeldToday','#datarow_' + i).text(currentData.yeldToday + 'kWh');
+                $('.totalYeld','#datarow_' + i).text(currentData.totalYeld + 'kWh');
+            
+               
+                chartData.push({sn: i, values:inverterData[i].samples, color:colors[idx]})
+                
+                //$('.inverterSN').append('<span style="color:' + colors[idx] + ';">&bull; ' + invertName(i) + '</span>&nbsp;&nbsp;');
+                
+
+            }
+
+            
+                var lastUpd = inverterData[availableInverters[0]].samples[inverterData[availableInverters[0]].samples.length - 1].date;
+                $('.lastUpdated').text('ULTIMO AGGIORNAMENTO: ' + moment(lastUpd).format('DD/MM/YYYY HH:mm'));
+            
+           
+            initChart(chartData);
+        }
+        
+
+        function invertName(sn){
+                if(sn == 'PEL3400R19340013'){
+                    return sn + ' (FRA)';
+                }else if(sn == 'PEL4600N18C17009'){
+                    return sn + ' (ANGELO)';
+                }else{
+                    return sn;
+                }
+                
+
+            }
+
+    </script>
+
+</body>
+
+</html>
