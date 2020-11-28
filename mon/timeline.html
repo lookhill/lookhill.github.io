@@ -507,9 +507,9 @@
             var started = (lastRecord && lastRecord.end == null);
 
             if(started){
-                $('.btnStartStop[data-room="' + room + '"] .startstop').html(room + '<br/>STOP');
+                $('.btnStartStop[data-room="' + room + '"] .startstop').html('<br/>STOP');
             }else{
-                $('.btnStartStop[data-room="' + room + '"] .startstop').html(room + '<br/>START');
+                $('.btnStartStop[data-room="' + room + '"] .startstop').html('<br/>START');
             }
 
         } catch (error) {
