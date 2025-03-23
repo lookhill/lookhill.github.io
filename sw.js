@@ -1,20 +1,33 @@
 const CACHE_NAME = 'expiry-tracker-v1'
-const urlsToCache = [
+const STATIC_CACHE = 'static-cache-v1'
+const DYNAMIC_CACHE = 'dynamic-cache-v1'
+
+const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
   '/favicon.ico',
   '/assets/index.css',
-  '/assets/index.js'
+  '/assets/index.js',
+  '/icons/icon-72x72.png',
+  '/icons/icon-96x96.png',
+  '/icons/icon-128x128.png',
+  '/icons/icon-144x144.png',
+  '/icons/icon-152x152.png',
+  '/icons/icon-192x192.png',
+  '/icons/icon-384x384.png',
+  '/icons/icon-512x512.png'
 ]
 
 // Install service worker
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        return cache.addAll(urlsToCache)
-      })
+    Promise.all([
+      caches.open(STATIC_CACHE).then((cache) => {
+        return cache.addAll(STATIC_ASSETS)
+      }),
+      caches.open(DYNAMIC_CACHE)
+    ])
   )
 })
 
@@ -24,7 +37,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
+          if (cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE) {
             return caches.delete(cacheName)
           }
         })
@@ -35,6 +48,11 @@ self.addEventListener('activate', (event) => {
 
 // Fetch event handler
 self.addEventListener('fetch', (event) => {
+  // Skip cross-origin requests
+  if (!event.request.url.startsWith(self.location.origin)) {
+    return
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
@@ -56,7 +74,8 @@ self.addEventListener('fetch', (event) => {
           // Clone the response because it can only be used once
           const responseToCache = response.clone()
 
-          caches.open(CACHE_NAME)
+          // Cache the response in dynamic cache
+          caches.open(DYNAMIC_CACHE)
             .then((cache) => {
               cache.put(event.request, responseToCache)
             })
@@ -65,4 +84,43 @@ self.addEventListener('fetch', (event) => {
         })
       })
   )
+})
+
+// Handle push notifications
+self.addEventListener('push', (event) => {
+  const options = {
+    body: event.data.text(),
+    icon: '/icons/icon-192x192.png',
+    badge: '/icons/icon-72x72.png',
+    vibrate: [100, 50, 100],
+    data: {
+      dateOfArrival: Date.now(),
+      primaryKey: 1
+    },
+    actions: [
+      {
+        action: 'explore',
+        title: 'View Products'
+      },
+      {
+        action: 'close',
+        title: 'Close'
+      }
+    ]
+  }
+
+  event.waitUntil(
+    self.registration.showNotification('Expiry Tracker', options)
+  )
+})
+
+// Handle notification clicks
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close()
+
+  if (event.action === 'explore') {
+    event.waitUntil(
+      clients.openWindow('/')
+    )
+  }
 }) 

@@ -3,12 +3,32 @@
   <head>
     <meta charset="UTF-8">
     <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#1976D2">
+    <meta name="description" content="Track your products' expiration dates">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Expiry">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-TileColor" content="#1976D2">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="application-name" content="Expiry Tracker">
+    
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
     <link rel="manifest" href="/manifest.json">
+    
     <title>Expiry Tracker</title>
-    <script type="module" crossorigin src="/assets/index-BTTfbtB2.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DWDL0-D8.css">
+
+    <script>
+      // Just for testing
+      if(localStorage.getItem('products') == null){
+        localStorage.setItem('products', '[{"id":"21606973-08c8-48d8-b0b8-14181ab9eb7f","name":"Biscotti con panna e cacao","barcode":"8012666049295","expiryDate":"2025-03-30T22:00:00.000Z","imageUrl":"https://images.openfoodfacts.org/images/products/801/266/604/9295/front_fr.3.400.jpg","addedDate":"2025-03-23T01:38:35.245Z","notified":false,"quantity":1},{"id":"2a4c37d0-2d45-4e29-a05a-ff237225a1b0","name":"Yogurt Bianco Greco Intero","barcode":"8000633039172","expiryDate":"2025-03-24T23:00:00.000Z","imageUrl":"https://images.openfoodfacts.org/images/products/800/063/303/9172/front_it.7.400.jpg","addedDate":"2025-03-23T01:39:03.058Z","notified":false,"quantity":1},{"id":"9ff715c9-03a5-4f41-82d6-d13900bfda65","name":"Latte parzialmente scremato","barcode":"8002795002032","expiryDate":"2025-04-15T22:00:00.000Z","imageUrl":"https://images.openfoodfacts.org/images/products/800/279/500/2032/front_it.8.400.jpg","addedDate":"2025-03-23T01:40:03.649Z","notified":false,"quantity":1},{"id":"38ae99fe-9978-401a-a7bc-0b4f1b0d01ee","barcode":"8000005048504","expiryDate":"2025-03-25","imageUrl":"https://images.openfoodfacts.org/images/products/800/000/504/8504/front_it.36.400.jpg","addedDate":"2025-03-23T01:41:43.884Z","notified":false,"quantity":1,"name":"Panna Hoplà"},{"id":"f1d38649-7a0f-4600-99d8-2c3500892ebb","name":"Formaggio spalmabile","barcode":"8000633037352","expiryDate":"2025-04-06T22:00:00.000Z","imageUrl":"https://images.openfoodfacts.org/images/products/800/063/303/7352/front_it.3.400.jpg","addedDate":"2025-03-23T01:42:01.886Z","notified":false,"quantity":1},{"id":"1c07deee-270b-4990-a0f6-fd3c53593764","name":"Nutella","barcode":"80135876","expiryDate":"2025-03-28","imageUrl":"https://images.openfoodfacts.org/images/products/000/008/013/5876/front_en.148.400.jpg","addedDate":"2025-03-23T15:49:50.460Z","notified":false,"quantity":1}]')
+      }
+    </script>
+
+    <script type="module" crossorigin src="/assets/index-prbQu9Uw.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BCrLFZWk.css">
   </head>
   <body>
     <div id="app"></div>
