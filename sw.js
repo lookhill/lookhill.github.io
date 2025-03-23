@@ -7,8 +7,6 @@ const STATIC_ASSETS = [
   '/index.html',
   '/manifest.json',
   '/favicon.ico',
-  '/assets/index.css',
-  '/assets/index.js',
   '/icons/icon-72x72.png',
   '/icons/icon-96x96.png',
   '/icons/icon-128x128.png',
@@ -96,17 +94,7 @@ self.addEventListener('push', (event) => {
     data: {
       dateOfArrival: Date.now(),
       primaryKey: 1
-    },
-    actions: [
-      {
-        action: 'explore',
-        title: 'View Products'
-      },
-      {
-        action: 'close',
-        title: 'Close'
-      }
-    ]
+    }
   }
 
   event.waitUntil(
@@ -118,9 +106,7 @@ self.addEventListener('push', (event) => {
 self.addEventListener('notificationclick', (event) => {
   event.notification.close()
 
-  if (event.action === 'explore') {
-    event.waitUntil(
-      clients.openWindow('/')
-    )
-  }
+  event.waitUntil(
+    clients.openWindow('/')
+  )
 }) 
